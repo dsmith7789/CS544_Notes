@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+// messages (protocol buffers, aka "protobufs")
+// define a message that contains all the arguments we want to send to a function
+// and another message containing the return values
+
+message MultReq {
+	// assign IDs to our variables; never re-use an ID!
+	int32 x = 1; 
+	int32 y = 2;
+}
+
+// "many" to handle lists/PyTorch Tensors/other types with more than a single value
+message MultManyReq {
+	repeated int32 nums = 1;
+}
+
+message MultResp {
+	int32 result = 1;
+}
+
+
+// services (RPC functions)
+// specifies the messages coming in and those that are going back
+service Calc {
+	// format: rpc <NAME>(ARGUMENTS) returns (RETVALS);
+	rpc Mult(MultReq) returns (MultResp);
+	rpc MultMany(MultManyReq) returns (MultResp);	// in this case, we end up with a single result
+}
+
