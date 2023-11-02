@@ -3,3 +3,5 @@ nb/.ipynb_checkpoints/*
 *.arrow
 *.csv
 *.parquet
+*.zip
+*.txt
