@@ -29,3 +29,8 @@ for kind_id, food_name in kinds:
         else:
             break
         fruit_idx += 1
+
+# need to use the same hash partition function and mod on both tables
+# end up with pairs of partitions with same keys on both sides (i.e. all tuples with
+# "A" are in the same partition)
+# both tables go over the network but only exactly once.
